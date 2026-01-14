@@ -5,3 +5,9 @@
 # Ignore CLAUDE.md file
 CLAUDE.md
 
+# Ignore environment files with API keys/credentials
+.Renviron
+.Renviron.*
+.env
+.env.*
+
