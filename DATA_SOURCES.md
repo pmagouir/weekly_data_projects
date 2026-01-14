@@ -195,7 +195,7 @@ install.packages("blsR")
 library(blsR)
 
 # CPI data
-cpi <- get_series("CUSR0000SA0", start_year = 2020, end_year = 2024)
+cpi <- get_series("CUSR0000SA0", start_year = 2015, end_year = 2024)
 ```
 
 ---
@@ -270,7 +270,7 @@ install.packages("rscorecard")
 
 library(rscorecard)
 
-# Set API key
+# Set API key 
 sc_key("YOUR_API_KEY")
 
 # Query institutions
