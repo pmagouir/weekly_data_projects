@@ -1,0 +1,7 @@
+# Ignore raw data files
+**/data/raw/**
+**/raw/**
+
+# Ignore CLAUDE.md file
+CLAUDE.md
+
