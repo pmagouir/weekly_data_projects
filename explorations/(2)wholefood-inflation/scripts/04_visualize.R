@@ -34,13 +34,13 @@ dc_summary <- results$dc_summary
 
 p_overall_trend <- category_annual |>
   filter(region == "National") |>
-  ggplot(aes(x = year, y = avg_pct_change, color = category)) +
+  ggplot(aes(x = year, y = avg_pct_change, colour = category)) +
   geom_line(linewidth = 1.2) +
   geom_point(size = 2.5) +
   geom_hline(yintercept = 0, linetype = "dashed", color = "gray60") +
-  scale_color_manual(
-    values = c("whole_food" = colors_brand["primary"],
-               "processed_food" = colors_brand["secondary"]),
+  scale_color_discrete(
+  # values = c("whole_food" = colors_brand[1],
+  #            "processed_food" = colors_brand[2]),
     labels = c("whole_food" = "Whole Foods",
                "processed_food" = "Processed Foods")
   ) +

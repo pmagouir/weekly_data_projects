@@ -59,10 +59,18 @@ category_annual |>
 cat("\nLinear trends (annual rate of change):\n")
 category_trends <- category_annual |>
   filter(region == "National") |>
-  group_by(category) |>
-  do(model = lm(avg_pct_change ~ year, data = .)) |>
+  nest(data = -category) |>                       # 1. Nest data by category
   mutate(
-    trend_coef = map_dbl(model, ~ coef(.)[2]),
+    # 2. Fit the model on the nested data
+    model = map(data, ~ lm(avg_pct_change ~ year, data = .x)),
+    
+    # 3. Extract coefficients safely
+    trend_coef = map_dbl(model, ~ {
+      # Safety check: ensure we have a slope coefficient
+      coefs <- coef(.)
+      if(length(coefs) >= 2) coefs[2] else NA_real_
+    }),
+    
     r_squared = map_dbl(model, ~ summary(.)$r.squared)
   )
 
@@ -193,7 +201,7 @@ cat("  Median:", sprintf("%+.1f%%", median(dc_comparison$dc_premium_pct, na.rm =
 # Trend in DC premium
 dc_premium_trend <- dc_comparison |>
   mutate(year_decimal = decimal_date(year_month)) |>
-  lm(dc_premium_pct ~ year_decimal, data = .)
+  lm(dc_premium_pct ~ year_decimal, data = _)
 
 cat("\nTrend in DC premium:\n")
 cat("  Annual change:", sprintf("%+.2f pp/year", coef(dc_premium_trend)[2]), "\n")

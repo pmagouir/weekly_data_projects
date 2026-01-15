@@ -29,8 +29,8 @@ cat("Loaded", nrow(cpi_raw), "CPI observations\n")
 # -----------------------------------------------------------------------------
 
 # Define categories
-whole_foods <- c("meats", "fruits_vegetables", "dairy", "eggs", "milk", "nuts", "beans")
-processed_foods <- c("sweets", "candy", "desserts", "frozen_foods", "processed_foods")
+whole_foods <- c("Meats", "Fruits_Vegetables", "Dairy")
+processed_foods <- c("Sweets", "Candy_Gum", "Frozen_Foods", "Other_Processed")
 
 cpi_clean <- cpi_raw |>
   mutate(

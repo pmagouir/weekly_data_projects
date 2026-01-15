@@ -39,29 +39,24 @@ whole_food_series <- list(
   "food_overall" = "CUSR0000SAF11",  # Food at home (U.S. city average)
   
   # Whole Foods
-  "meats" = "CUSR0000SAF111",        # Meats, poultry, fish, and eggs
-  "fruits_vegetables" = "CUSR0000SAF112",  # Fruits and vegetables
-  "dairy" = "CUSR0000SAF113",        # Dairy and related products
-  "eggs" = "CUSR0000SAF1131",        # Eggs
-  "milk" = "CUSR0000SAF1132",        # Milk
-  "nuts" = "CUSR0000SAF1161",        # Nuts (if available)
-  "beans" = "CUSR0000SAF1122"        # Dried beans (if available)
+  "Meats" = "CUSR0000SAF111",        # Meats, poultry, fish, and eggs
+  "Fruits_Vegetables" = "CUSR0000SAF112",  # Fruits and vegetables
+  "Dairy" = "CUSR0000SAF113"     # Eggs
+  
 )
 
 # Processed/Junk Foods
 processed_food_series <- list(
-  "sweets" = "CUSR0000SAF117",       # Sugar and sweets
-  "candy" = "CUSR0000SAF1171",       # Candy and chewing gum
-  "desserts" = "CUSR0000SAF1172",    # Other sweets (if available)
-  "frozen_foods" = "CUSR0000SAF118", # Frozen and freeze dried prepared foods
-  "processed_foods" = "CUSR0000SAF119"  # Other prepared foods
+  "Sweets"           = "CUSR0000SEFR",    # Sugar and sweets (Seas. Adj.)
+  "Candy_Gum"        = "CUUR0000SEFR02",  # Candy/Gum (Not Seas. Adj.)
+  "Frozen_Foods"     = "CUSR0000SEFW",    # Frozen prepared foods (Seas. Adj.)
+  "Other_Processed"  = "CUSR0000SAF115"  # Other food at home (Seas. Adj.)
 )
 
 # DC Regional Series (replace with actual DC-specific series IDs)
 dc_series <- list(
-  "food_overall_dc" = "CUURA000SAF11",  # Food at home - DC area
-  "meats_dc" = "CUURA000SAF111",
-  "fruits_vegetables_dc" = "CUURA000SAF112"
+  "food_overall_dc" = "CUURA000SAF11"  # Food at home - DC area
+ 
 )
 
 # Combine all series
@@ -84,7 +79,7 @@ fetch_series <- function(series_id, series_name) {
       observation_start = as.Date(paste0(min(years), "-01-01")),
       observation_end = as.Date(paste0(max(years), "-12-31")),
       frequency = "m",  # Monthly
-      units = "pc1"     # Percent change from year ago (optional, can use "lin" for index)
+      units = "lin"     # Percent change from year ago (optional, can use "lin" for index)
     )
     
     if (!is.null(data) && nrow(data) > 0) {
