@@ -50,13 +50,18 @@ message("\nFetching ", length(FRED_SERIES), " series from FRED...")
 fetch_series <- function(series_id) {
   message("  Fetching: ", series_id)
 
+  # Detect if quarterly series (ends in Q)
+  is_quarterly <- grepl("Q$", series_id)
+  freq <- if (is_quarterly) "q" else "m"
+  freq_label <- if (is_quarterly) "quarterly" else "monthly"
+
   tryCatch({
     # Get observations
     obs <- fredr(
       series_id = series_id,
       observation_start = as.Date("2000-01-01"),
       observation_end = Sys.Date(),
-      frequency = "m"  # Monthly
+      frequency = freq
     )
 
     # Get series info for metadata
@@ -66,7 +71,7 @@ fetch_series <- function(series_id) {
       mutate(
         series_title = info$title,
         units = info$units,
-        frequency = "monthly"
+        frequency = freq_label
       )
 
   }, error = function(e) {

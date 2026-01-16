@@ -49,14 +49,37 @@ FRED_SERIES <- c(
   "CPIFABSL",      # Food CPI
   "CPIENGSL",      # Energy CPI
 
-  # Labor
+  # Labor - Overall
   "UNRATE",        # Unemployment rate
+
+  # Unemployment Rate by Education (25+ years)
+  "LNS14027660",   # Less than High School
+  "LNS14027662",   # High School, No College
+  "LNS14027689",   # Some College or Associate
+  "LNS14027659",   # Bachelor's Degree and Higher
+
+  # Labor Force Participation Rate by Education (25+ years)
+  "LNS11327660",   # Less than High School
+  "LNS11327662",   # High School, No College
+  "LNS11327689",   # Some College or Associate
+  "LNS11327659",   # Bachelor's Degree and Higher
+
+  # Employment-Population Ratio by Education (25+ years)
+  "LNS12327660",   # Less than High School
+  "LNS12327662",   # High School, No College
+  "LNS12327689",   # Some College or Associate
+  "LNS12327659",   # Bachelor's Degree and Higher
+
+  # Median Usual Weekly Earnings by Education (25+ years, quarterly)
+  "LEU0252916700Q",  # Less than High School
+  "LEU0252917300Q",  # High School, No College
+  "LEU0252918500Q",  # Bachelor's Degree and Higher
 
   # Rates
   "FEDFUNDS",      # Fed funds rate
   "MORTGAGE30US",  # 30-year fixed mortgage rate
 
- # Consumer sentiment (macro mood)
+  # Consumer sentiment (macro mood)
   "UMCSENT"        # University of Michigan: Consumer Sentiment
 )
 
