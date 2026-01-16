@@ -1,6 +1,40 @@
-# Ignore raw data files
+# =============================================================================
+# Raw Data (never commit)
+# =============================================================================
+
+# Exploration project raw data
 **/data/raw/**
 **/raw/**
+
+# =============================================================================
+# Foundational Data - ALL DATA EXCLUDED
+# =============================================================================
+# Only scripts and docs are committed. Anyone reproducing this work
+# must download their own data (IPUMS extract, HPS PUF, FRED API).
+# This ensures compliance with IPUMS terms of use.
+
+foundational_data/data_raw/**
+!foundational_data/data_raw/**/.gitkeep
+foundational_data/data_clean/**
+!foundational_data/data_clean/**/.gitkeep
+foundational_data/data_mart/**
+!foundational_data/data_mart/**/.gitkeep
+
+# =============================================================================
+# Data file patterns (belt and suspenders)
+# =============================================================================
+
+# IPUMS extracts
+*.dat.gz
+
+# Large data files
+*.parquet
+*.csv
+!**/output/**/*.csv
+
+# =============================================================================
+# Project Config
+# =============================================================================
 
 # Ignore CLAUDE.md file
 CLAUDE.md
